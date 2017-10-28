@@ -1,7 +1,7 @@
 <launch>
 
-    <arg name="robot_name" default="kezbot" />
-    <param name="robot_name" type="str" value="kezbot" />
+    <arg name="robot_name" default="kezbot_2" />
+    <param name="robot_name" type="str" value="kezbot_2" />
 
     <!-- joy node -->
     <node respawn="true" pkg="joy"
