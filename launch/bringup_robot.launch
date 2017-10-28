@@ -3,7 +3,6 @@
     <arg name="robot_name" value="kezbot" />
     <param name="robot_name" type="str" value="kezbot" />
 
-    <group ns="$(arg robot_name)">
     <!-- Base None -->
     <include file="$(find kezbot_v2)/launch/bringup_base.launch">
         <arg name="robot_name" value="$(arg robot_name)" />
@@ -18,5 +17,8 @@
     <!-- <include file="$(find kezbot_v2)/launch/bringup_raspicam.launch">
         <arg name="robot_name" value="$(arg robot_name)" />
     </include> -->
-    </group>
+
+    <!-- Multimaster Nodes -->
+    <include file="$(find kezbot_v2)/launch/multimaster.launch" />
+
 </launch>

@@ -65,7 +65,8 @@
   <!-- <run_depend>rosserial_arduino</run_depend> -->
   <run_depend>sensor_msgs</run_depend>
   <run_depend>rosconsole</run_depend>
-
+  <run_depend>master_discovery</run_depend>
+  <run_depend>master_sync_file</run_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->
