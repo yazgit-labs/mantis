@@ -34,9 +34,9 @@ int main(int argc, char** argv){
     ros::NodeHandle n;
     ros::Rate r(100); // Hz
 
-    ros::Subscriber pose2d_sub = n.subscribe( "/pose2d", 10, pose2dCallback);
-    ros::Subscriber pose_sub = n.subscribe( "/pose", 10, poseCallback);
-    ros::Publisher  odom_pub = n.advertise<nav_msgs::Odometry>("/odom", 50);
+    ros::Subscriber pose2d_sub = n.subscribe( "pose2d", 10, pose2dCallback);
+    ros::Subscriber pose_sub = n.subscribe( "pose", 10, poseCallback);
+    ros::Publisher  odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
     tf::TransformBroadcaster odom_broadcaster;
 
     ros::Time current_time, last_time;
