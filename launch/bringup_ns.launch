@@ -1,7 +1,5 @@
 <launch>
-
   <arg name="robot_name" default="kezbot" />
-
 
   <group ns="$(arg robot_name)">
 
@@ -38,6 +36,8 @@
 
     <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_base_link_kezbot"
           args="0.0 0.0 0.0 0.0 0.0 0.0 $(arg robot_name)/base_footprint $(arg robot_name)/base_link 200" />
-
+	  
+    <!-- Multimaster Nodes -->
+    <include file="$(find kezbot_v2)/launch/multimaster.launch" />
     </group>
 </launch>
