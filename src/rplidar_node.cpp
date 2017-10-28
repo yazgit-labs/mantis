@@ -183,6 +183,8 @@ bool start_motor(std_srvs::Empty::Request &req,
 
 int main(int argc, char * argv[]) {
     ros::init(argc, argv, "rplidar_node");
+
+    //todo gather robot name from parameter service
     if (argc != 2){
         ROS_ERROR("need robot name as argument");
         return -1;
@@ -197,7 +199,7 @@ int main(int argc, char * argv[]) {
     bool angle_compensate = true;
 
     ros::NodeHandle nh;
-    ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan>(robot_name+"/base_scan", 1000);
+    ros::Publisher scan_pub = nh.advertise<sensor_msgs::LaserScan>("/base_scan", 1000);
     ros::NodeHandle nh_private("~");
     nh_private.param<std::string>("serial_port", serial_port, "/dev/ttyUSB0");
     nh_private.param<int>("serial_baudrate", serial_baudrate, 115200);
