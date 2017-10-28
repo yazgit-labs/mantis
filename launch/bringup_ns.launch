@@ -1,46 +1,43 @@
 <launch>
-	
-    <arg name="robot_name" default="kezbot" />
-    
-	
-	<group ns="$(arg robot_name)">
 
-		<param name="robot_name" type="str" value="$(arg robot_name)" />	
-		
+  <arg name="robot_name" default="kezbot" />
 
-		<!-- arduino !-->
-		<node pkg="rosserial_python" type="serial_node.py" name="$(arg robot_name)_bringup">
-	        <param name="port" value="/dev/kezbot_arduino" />
-        	<param name="baud" value="115200" />
+
+  <group ns="$(arg robot_name)">
+
+    <param name="robot_name" type="str" value="$(arg robot_name)" />
+
+    <!-- arduino !-->
+    <node pkg="rosserial_python" type="serial_node.py" name="$(arg robot_name)_bringup">
+      <param name="port" value="/dev/kezbot_arduino" />
+      <param name="baud" value="115200" />
 		</node>
 
-		<!-- rp lidar !-->
-	    <node name="rplidar_$(arg robot_name)"
-		    pkg="kezbot_v2"
-		    type="kezbot_v2_rplidar_node"
-		    args="$(arg robot_name)"
-		    output="screen">
+    <!-- rp lidar !-->
+    <node name="rplidar_$(arg robot_name)"
+          pkg="kezbot_v2"
+          type="kezbot_v2_rplidar_node"
+          args="$(arg robot_name)"
+          output="screen">
 
-		    <param name="serial_port"       type="string"   value="/dev/kezbot_rplidar" />
-		    <param name="serial_baudrate"   type="int"      value="115200" />
-		    <param name="frame_id"          type="string"   value="$(arg robot_name)/base_scan" />
-		    <param name="inverted"          type="bool"     value="false" />
-		    <param name="angle_compensate"  type="bool"     value="true" />
+      <param name="serial_port"       type="string"   value="/dev/kezbot_rplidar" />
+      <param name="serial_baudrate"   type="int"      value="115200" />
+      <param name="frame_id"          type="string"   value="$(arg robot_name)/base_scan" />
+      <param name="inverted"          type="bool"     value="false" />
+      <param name="angle_compensate"  type="bool"     value="true" />
+    </node>
 
-		</node>
+    <!-- tf broadcasters !-->
+    <node pkg="tf" type="static_transform_publisher"
+          name="$(arg robot_name)_laser_tf_broadcaster"
+          args="0 0 0.15 0 0 0 1 $(arg robot_name)/base_link $(arg robot_name)/base_scan 100" />
 
-		<!-- tf broadcasters !-->
-		<node pkg="tf" type="static_transform_publisher"
-		    name="$(arg robot_name)_laser_tf_broadcaster"
-		    args="0 0 0.15 0 0 0 1 $(arg robot_name)/base_link $(arg robot_name)/base_scan 100" />
-
-
-	    <node pkg="kezbot_v2" type="kezbot_v2_odom_publisher"
-        	args="$(arg robot_name)" name="$(arg robot_name)_odom_publisher" />
+    <node pkg="kezbot_v2" type="kezbot_v2_odom_publisher"
+          args="$(arg robot_name)" name="$(arg robot_name)_odom_publisher" />
 
 
-		<node pkg="tf" type="static_transform_publisher" name="base_footprint_to_base_link_kezbot"
-		    args="0.0 0.0 0.0 0.0 0.0 0.0 $(arg robot_name)/base_footprint $(arg robot_name)/base_link 200" />
+    <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_base_link_kezbot"
+          args="0.0 0.0 0.0 0.0 0.0 0.0 $(arg robot_name)/base_footprint $(arg robot_name)/base_link 200" />
 
-	</group>
+    </group>
 </launch>
