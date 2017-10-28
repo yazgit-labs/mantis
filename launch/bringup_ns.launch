@@ -1,15 +1,14 @@
 <launch>
-  <arg name="robot_name" default="kezbot" />
+  <arg name="robot_name" default="kezbot" />  
+  <param name="robot_name" type="str" value="$(arg robot_name)" />
 
   <group ns="$(arg robot_name)">
 
-    <param name="robot_name" type="str" value="$(arg robot_name)" />
-
     <!-- arduino !-->
-    <node pkg="rosserial_python" type="serial_node.py" name="$(arg robot_name)_bringup">
+    <node pkg="rosserial_python" type="serial_node.py" name="bringup_arduino">
       <param name="port" value="/dev/kezbot_arduino" />
       <param name="baud" value="115200" />
-		</node>
+    </node>
 
     <!-- rp lidar !-->
     <node name="rplidar_$(arg robot_name)"
