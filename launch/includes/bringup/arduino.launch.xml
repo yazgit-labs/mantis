@@ -1,9 +1,9 @@
 <launch>
 
     <arg name="robot_name" default="kezbot"/>
-    <param name="robot_name" type="str" value="kezbot" />
+    <param name="robot_name" type="str" value="$(arg robot_name)" />
 
-    <node pkg="rosserial_python" type="serial_node.py" name="$(arg robot_name)_bringup">
+    <node pkg="rosserial_python" type="serial_node.py" name="bringup_arduino">
         <param name="port" value="/dev/kezbot_arduino" />
         <param name="baud" value="115200" />
         <remap from="/pose2d" to="/$(arg robot_name)/pose2d" />
@@ -13,10 +13,10 @@
     </node>
 
     <node pkg="kezbot_v2" type="kezbot_v2_odom_publisher"
-        args="$(arg robot_name)" name="$(arg robot_name)_odom_publisher" />
+        args="$(arg robot_name)" name="odom_publisher" />
 
-    <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_base_link_kezbot"
-        args="0.0 0.0 0.0 0.0 0.0 0.0 kezbot/base_footprint kezbot/base_link 200" />
+    <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_base_link"
+        args="0.0 0.0 0.0 0.0 0.0 0.0 $(arg robot_name)/base_footprint $(arg robot_name)/base_link 200" />
 
 
 </launch>

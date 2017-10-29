@@ -70,7 +70,7 @@ int main(int argc, char** argv){
         //first, we'll publish the transform over tf
         geometry_msgs::TransformStamped odom_trans;
         odom_trans.header.stamp = current_time;
-        odom_trans.header.frame_id = "odom";
+        odom_trans.header.frame_id = robot_name+"/odom";
         odom_trans.child_frame_id = robot_name+"/base_footprint";
 
          odom_trans.transform.translation.x = x;

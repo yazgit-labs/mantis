@@ -1,8 +1,13 @@
 <launch>
 
-  <arg name="scan_topic" default="kezbot/base_scan" />
-  <arg name="odom_frame" default="odom" />
-  <arg name="base_frame" default="kezbot/base_link" />
+  <arg name="robot_name" default="kezbot" />
+  <param name="robot_name" value="$(arg robot_name)" />
+
+
+
+  <arg name="scan_topic" default="base_scan" />
+  <arg name="odom_frame" default="$(arg robot_name)/odom" />
+  <arg name="base_frame" default="$(arg robot_name)/base_link" />
   <arg name="map_frame" default="map" />
 
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">

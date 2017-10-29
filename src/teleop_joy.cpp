@@ -31,10 +31,8 @@ TeleopRobot::TeleopRobot():
   nh_.param("axis_angular", angular_, angular_);
   nh_.param("scale_angular", a_scale_, a_scale_);
   nh_.param("scale_linear", l_scale_, l_scale_);
-  nh_.param("robot_name",robot_name, std::string("kezbot"));
 
-
-  vel_pub_ = nh_.advertise<geometry_msgs::Twist>(robot_name+"/cmd_vel", 1);
+  vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
 
 
   joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 10, &TeleopRobot::joyCallback, this);
@@ -53,11 +51,6 @@ void TeleopRobot::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "teleop_robot");
-  // if (argc != 2){
-  //     ROS_ERROR("need robot name as argument");
-  //     return -1;
-  // };
-  // robot_name = argv[1];
   TeleopRobot teleop_turtle;
 
   ros::spin();

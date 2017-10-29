@@ -8,7 +8,6 @@
   <node pkg="master_sync_fkie"
         type="master_sync"
         name="master_sync">
-
   </node>
 
 </launch>

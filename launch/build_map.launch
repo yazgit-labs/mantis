@@ -3,9 +3,9 @@
   <param name="robot_name" value="$(arg robot_name)" />
 
   <group ns="$(arg robot_name)">
-    <include file="$(file kezbot_v2)/launch/includes/navigation/amcl.launch.xml">
+    <include file="$(find kezbot_v2)/launch/includes/navigation/gmapping.launch.xml">
       <arg name="robot_name" value="$(arg robot_name)" />
-    </include>
+    </include> 
   </group>
 
 </launch>
