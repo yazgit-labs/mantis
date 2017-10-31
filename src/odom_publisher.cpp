@@ -70,8 +70,8 @@ int main(int argc, char** argv){
         //first, we'll publish the transform over tf
         geometry_msgs::TransformStamped odom_trans;
         odom_trans.header.stamp = current_time;
-        odom_trans.header.frame_id = robot_name+"/odom";
-        odom_trans.child_frame_id = robot_name+"/base_footprint";
+        odom_trans.header.frame_id = robot_name + "/odom";
+        odom_trans.child_frame_id = robot_name + "/base_footprint";
 
          odom_trans.transform.translation.x = x;
          odom_trans.transform.translation.y = y;
@@ -90,8 +90,8 @@ int main(int argc, char** argv){
         //next, we'll publish the odometry message over ROS
         nav_msgs::Odometry odom;
         odom.header.stamp = current_time;
-        odom.header.frame_id = "odom";
-        odom.child_frame_id = robot_name+"/base_link";
+        odom.header.frame_id = robot_name + "/odom";
+        odom.child_frame_id = robot_name + "/base_link";
 
         //set the position
         // odom.pose.pose.position.x = x;
