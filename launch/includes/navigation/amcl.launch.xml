@@ -1,5 +1,5 @@
 <launch>
-  <arg name="robot_name" default="kezbot">
+  <arg name="robot_name" default="kezbot" />
   <param name="robot_name" value="$(arg robot_name)" />
 
   <arg name="use_map_topic"   default="false"/>
@@ -11,14 +11,6 @@
   <arg name="odom_frame_id"   default="$(arg robot_name)/odom"/>
   <arg name="base_frame_id"   default="$(arg robot_name)/base_footprint"/>
   <arg name="global_frame_id" default="map"/>
-
-  <!--
-  <arg name="map_file"        default="$(find kezbot_v2)/maps/sokullu-1-half.yaml" />
-  <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)">
-    <param name="frame_id" value="/map" />
-  </node>
-  !-->
-
 
   <node pkg="amcl" type="amcl" name="amcl">
     <param name="use_map_topic"             value="$(arg use_map_topic)"/>

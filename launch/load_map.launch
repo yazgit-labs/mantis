@@ -1,7 +1,8 @@
 <launch>
-  
+
+  <arg name="map_file" default="$(find kezbot_v2)/maps/robolab.yaml" />  
   <node pkg="map_server" type="map_server" name="map_server"
-    args="$(find kezbot_v2)/maps/robolab.yaml">
+    args="$(arg map_file)">
     <param name="frame_id" value="/map" />
   </node>
 
