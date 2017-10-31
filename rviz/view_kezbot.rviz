@@ -25,7 +25,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: LaserScan
+    SyncSource: ""
 Visualization Manager:
   Class: ""
   Displays:
@@ -60,20 +60,13 @@ Visualization Manager:
           Value: true
         kezbot_2/odom:
           Value: true
-        map:
-          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          kezbot_2/odom:
-            kezbot_2/base_footprint:
-              kezbot_2/base_link:
-                kezbot_2/base_scan:
-                  {}
+        {}
       Update Interval: 0
       Value: true
     - Alpha: 1
