@@ -5,7 +5,7 @@
 
 
 
-  <arg name="scan_topic" default="base_scan" />
+  <arg name="scan_topic" default="$(arg robot_name)/base_scan" />
   <arg name="odom_frame" default="$(arg robot_name)/odom" />
   <arg name="base_frame" default="$(arg robot_name)/base_link" />
   <arg name="map_frame" default="/map" />
