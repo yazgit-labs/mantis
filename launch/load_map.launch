@@ -1,0 +1,8 @@
+<launch>
+  
+  <node pkg="map_server" type="map_server" name="map_server"
+    args="$(find kezbot_v2)/maps/robolab.yaml">
+    <param name="frame_id" value="/map" />
+  </node>
+
+</launch>
