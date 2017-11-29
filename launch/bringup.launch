@@ -7,6 +7,11 @@
 
   <group ns="$(arg robot_name)">
 
+    <!-- amcl !-->
+    <include file="$(find kezbot_v2)/launch/includes/navigation/amcl.launch.xml">
+      <arg name="robot_name" value="$(arg robot_name)" />
+    </include>
+
     <!-- arduino !-->
     <include file="$(find kezbot_v2)/launch/includes/bringup/arduino.launch.xml">
       <arg name="robot_name" value="$(arg robot_name)" />    
