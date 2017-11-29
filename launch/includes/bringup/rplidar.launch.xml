@@ -7,7 +7,9 @@
       pkg="kezbot_v2"
       type="kezbot_v2_rplidar_node"
       args="$(arg robot_name)"
-      output="screen">
+      output="screen"
+      respawn="true"
+      >
 
       <param name="serial_port"       type="string"   value="/dev/kezbot_rplidar" />
       <param name="serial_baudrate"   type="int"      value="115200" />
