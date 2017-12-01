@@ -6,13 +6,6 @@
   <param name="robot_name" type="str" value="$(arg robot_name)" />
 
   <group ns="$(arg robot_name)">
-
-    <!-- teleop !-->
-    <include file="$(find kezbot_v2)/launch/includes/teleop/xbox.launch.xml">
-      <arg name="robot_name" value="$(arg robot_name)" />    
-      <arg name="joy_dev" value="/dev/input/js0" />
-    </include>
-
     <!-- arduino !-->
     <include file="$(find kezbot_v2)/launch/includes/bringup/arduino.launch.xml">
       <arg name="robot_name" value="$(arg robot_name)" />    
