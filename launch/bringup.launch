@@ -1,6 +1,6 @@
 <launch>
   
-  <arg name="robot_name" default="kezbot" />  
+  <arg name="robot_name" default="$(env ROBOT_NAME)" />
   <arg name="use_raspicam" default="false" />
  
   <param name="robot_name" type="str" value="$(arg robot_name)" />
