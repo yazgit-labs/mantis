@@ -1,13 +1,21 @@
 #!/bin/bash 
 
-sudo cp $(rospack find kezbot_v2)/udev/02-kezbot.rules /etc/udev/rules.d
 
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+sudo cp $DIR/../udev/02-kezbot.rules /etc/udev/rules.d/
 ROBOT_NAME=""
-read -e -p "Enter robot name (default is kezbot): " -i "kezbot" ROBOT_NAME
+read -e -p "Enter robot name (no '-' is allowed): " -i "kezbot" ROBOT_NAME
 sudo echo "export ROBOT_NAME=$ROBOT_NAME" > /etc/profile.d/kezbot.sh
 
-if [ -d "$?" ] ; then
-  printf "%s\n" "${green}Env variables has set."
+if [ "$?" -ne 0 ] ; then
+  printf "%s\n" "${red}Env variables has not set." >&2
 else
-  printf "%s\n" "${red}Setting env variables has failed, you may use with sudo."
+  printf "%s\n" "${green}Success.."
 fi
