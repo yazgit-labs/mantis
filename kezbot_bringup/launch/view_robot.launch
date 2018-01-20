@@ -1,6 +1,6 @@
 <launch>
 
     <!-- RVIZ robot visualtion utility -->
-    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find kezbot_v2)/rviz/view_kezbot.rviz" />    
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find kezbot_bringup)/rviz/view_kezbot.rviz" />    
 
 </launch>
