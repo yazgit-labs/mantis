@@ -10,10 +10,9 @@
     <node pkg="rosserial_python" type="serial_node.py" name="bringup_arduino" respawn="$(arg respawn)">
         <param name="port" value="$(arg port)" />
         <param name="baud" value="$(arg baud)" />
-        <remap from="pose2d" to="/pose2d" />
-        <remap from="cmd_vel" to="/cmd_vel" />
-        <remap from="pose" to="/pose" />
-        <remap from="speed" to="/speed" />
+        <remap from="/pose2d" to="pose2d" />
+        <remap from="/cmd_vel" to="cmd_vel" />
+        <remap from="/pose" to="pose" />
     </node>
 
     <node pkg="kezbot_odometry" type="kezbot_odom_publisher"
