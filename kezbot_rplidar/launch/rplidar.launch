@@ -1,0 +1,5 @@
+<launch>
+
+  <node pkg="kezbot_rplidar" name="kezbot_rplidar" type="kezbot_rplidar" />
+
+</launch>
