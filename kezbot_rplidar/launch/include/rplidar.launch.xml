@@ -3,7 +3,6 @@
   <arg name="robot_name" default="kezbot" />
   <param name="robot_name" value="$(arg robot_name)" />` 
 
-  <group ns="$(arg robot_name)">
   <node name="rplidar"
       pkg="kezbot_rplidar"
       type="kezbot_rplidar_node"
@@ -24,5 +23,4 @@
       name="laser_tf_broadcaster"
       args="0 0 0.15 0 0 0 1 $(arg robot_name)/base_link $(arg robot_name)/base_scan 100" />
 
-  </group>
 </launch>
