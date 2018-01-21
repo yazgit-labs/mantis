@@ -70,5 +70,6 @@
     <param name="lasamplestep" value="0.005"/>
 
     <remap from="scan" to="$(arg scan_topic)"/>
+    <remap from="map" to="/map"/>
   </node>
 </launch>
