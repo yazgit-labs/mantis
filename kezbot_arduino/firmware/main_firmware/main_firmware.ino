@@ -43,10 +43,10 @@ imu::Quaternion quat;
 
 
 //encoderPinSetup
-int encoderLA = 36;
-int encoderLB = 38;
-int encoderRA = 40;
-int encoderRB = 42;
+int encoderLA = 38;
+int encoderLB = 40;
+int encoderRA = 42;
+int encoderRB = 44;
 
 //object definitions
 Encoder leftEncoder(LEFT);
@@ -218,10 +218,10 @@ void cmd_vel_handle( const geometry_msgs::Twist& msg) {
   float turn_message = msg.angular.z;
 
   fwdMotor.write(
-    int(map_func(fwd_message, -1.3, 1.3 , 160 , 20))
+    int(map_func(fwd_message, -0.7, 0.7 , 180 , 0))
   );
   turnMotor.write(
-    int(map_func(turn_message, -2.5, 2.5 , 20, 160))
+    int(map_func(turn_message, -2.5, 2.5 , 0, 180))
   );
 }
 
