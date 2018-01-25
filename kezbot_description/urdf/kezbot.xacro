@@ -1,0 +1,51 @@
+<?xml version='1.0'?>
+<robot name="kezbot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find kezbot_description)/urdf/xacro/kezbot_body.xacro" />
+    <xacro:include filename="$(find kezbot_description)/urdf/xacro/kezbot_wheel.xacro" />
+    <xacro:include filename="$(find kezbot_description)/urdf/xacro/kezbot_lid.xacro" />
+
+
+    <xacro:kezbot_body prefix="base_link" />
+	
+    <xacro:kezbot_wheel 
+    	prefix="front" suffix="left"  
+    	xyz=" 0.09  0.137 0" rpy="0 0 0" 
+    	radius="0.055" 
+    	parent="base_link"
+    	/>
+    <xacro:kezbot_wheel 
+    	prefix="front" suffix="right" 
+    	xyz=" 0.09 -0.137 0" rpy="0 0 0" 
+    	radius="0.055" 
+		parent="base_link"
+    	/>
+    <xacro:kezbot_wheel 
+    	prefix="rear" suffix="left"   
+    	xyz="-0.09  0.137 0" rpy="0 0 0" 
+    	radius="0.055" 
+		parent="base_link"
+    	/>
+    <xacro:kezbot_wheel 
+    	prefix="rear" suffix="right"  
+    	xyz="-0.09 -0.137 0" rpy="0 0 0" 
+    	radius="0.055" 
+		parent="base_link"
+    	/>
+
+    <xacro:kezbot_lid
+    	prefix="upper"
+    	xyz="0 0 0.0725"
+    	parent="base_link"
+    	/>
+
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+
+
+
+</robot>
