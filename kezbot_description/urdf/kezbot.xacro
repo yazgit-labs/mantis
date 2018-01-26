@@ -18,19 +18,19 @@
     	prefix="front" suffix="right" 
     	xyz=" 0.09 -0.137 0" rpy="0 0 0" 
     	radius="0.055" 
-		parent="base_link"
+		  parent="base_link"
     	/>
     <xacro:kezbot_wheel 
     	prefix="rear" suffix="left"   
     	xyz="-0.09  0.137 0" rpy="0 0 0" 
     	radius="0.055" 
-		parent="base_link"
+		  parent="base_link"
     	/>
     <xacro:kezbot_wheel 
     	prefix="rear" suffix="right"  
     	xyz="-0.09 -0.137 0" rpy="0 0 0" 
     	radius="0.055" 
-		parent="base_link"
+		  parent="base_link"
     	/>
 
     <xacro:kezbot_lid
@@ -49,7 +49,6 @@
 
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-            <robotNamespace>/</robotNamespace>
         </plugin>
     </gazebo>
 
