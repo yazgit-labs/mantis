@@ -4,7 +4,7 @@
     <xacro:include filename="$(find kezbot_description)/urdf/xacro/kezbot_body.xacro" />
     <xacro:include filename="$(find kezbot_description)/urdf/xacro/kezbot_wheel.xacro" />
     <xacro:include filename="$(find kezbot_description)/urdf/xacro/kezbot_lid.xacro" />
-
+    <xacro:include filename="$(find kezbot_description)/urdf/laser/hokuyo.xacro" />
 
     <xacro:kezbot_body prefix="base_link" />
 	
@@ -39,6 +39,13 @@
     	parent="base_link"
     	/>
 
+
+    <xacro:laser
+      name="base_scan"
+      parent="upper_lid"
+      xyz="0.0 0.0 0.02" rpy="0 0 0"
+      meshes="package://kezbot_description/meshes/laser/"
+      /> 
 
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
