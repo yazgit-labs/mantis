@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<xacro:macro name="mantis_wheel" params="prefix suffix parent xyz rpy radius">
+		
+		<joint name="${prefix}_${suffix}_wheel_joint" type="continuous">
+			<origin xyz="${xyz}" rpy="${rpy}" />
+			<parent link="${parent}" />
+			<child link="${prefix}_${suffix}_wheel_link" />
+			<axis xyz="0 1 0" />
+		</joint>
+
+		<link name="${prefix}_${suffix}_wheel_link">
+			<collision name="collision">
+				<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+				<geometry>
+					<cylinder radius="${radius}" length="0.06"/>
+				</geometry>
+			</collision>
+			<visual name="${prefix}_${suffix}_wheel_link">
+				<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+				<geometry>
+					<cylinder radius="${radius}" length="0.06"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+				<mass value="0.01"/>
+				<inertia
+				ixx=".01" ixy="0.0" ixz="0.0"
+				iyy=".01" iyz="0.0"
+				izz=".01"/>
+			</inertial>
+		</link>
+
+		<transmission name="${prefix}_${suffix}_wheel_trans">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="${prefix}_${suffix}_wheel_motor">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+			<joint name="${prefix}_${suffix}_wheel_joint">
+				<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			</joint>
+		</transmission>
+
+	    <gazebo reference="${prefix}_${suffix}_wheel_link">
+			<mu1 value="0.3"/>
+			<mu2 value="0.3"/>
+			<kp  value="10000.0" />
+			<kd  value="1.0" />
+	        <material value="Gazebo/Grey"/>
+	    </gazebo>
+
+	</xacro:macro>
+
+</robot>

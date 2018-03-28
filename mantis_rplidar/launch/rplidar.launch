@@ -1,0 +1,5 @@
+<launch>
+
+  <node pkg="mantis_rplidar" name="mantis_rplidar" type="mantis_rplidar" />
+
+</launch>
