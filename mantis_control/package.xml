@@ -49,7 +49,12 @@
   <!-- Use doc_depend for packages you need only for building documentation: -->
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-
+  <build_depend>gazebo-ros-control</build_depend>
+  <build_export_depend>gazebo-ros-control</build_export_depend>
+  <exec_depend>gazebo-ros-control</exec_depend>
+  <build_depend>diff-drive-controller</build_depend>
+  <build_export_depend>diff-drive-controller</build_export_depend>
+  <exec_depend>diff-drive-controller</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
